@@ -1,8 +1,8 @@
-package order;
+package hello.core.order;
 
-import discount.RateDiscountPolicy;
-import member.Grade;
-import member.Member;
+import hello.core.discount.RateDiscountPolicy;
+import hello.core.member.Grade;
+import hello.core.member.Member;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
