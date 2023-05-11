@@ -1,15 +1,24 @@
 package hello.core;
 
-import member.Grade;
-import member.Member;
-import member.MemberService;
-import member.MemberServiceImpl;
+import hello.core.member.Grade;
+import hello.core.member.Member;
+import hello.core.member.MemberService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
     public static void main(String[] args) {
 
-        AppConfig appConfig = new AppConfig();
-        MemberService memberService = appConfig.memberService();
+//        AppConfig appConfig = new AppConfig();
+//        MemberService memberService = appConfig.memberService();
+
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        // 이름은 메소드 이름이며 첫번째 arg, 타입(리턴값)은 두번째 arg
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+
+
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
